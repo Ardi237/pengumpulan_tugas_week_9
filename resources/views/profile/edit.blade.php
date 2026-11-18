@@ -19,11 +19,20 @@
                 </div>
             </div>
 
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.delete-user-form')
+            @if (! $user->isAdmin() && ! ($user->isDosen() && $user->taughtCourses()->exists()))
+                <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+                    <div class="max-w-xl">
+                        @include('profile.partials.delete-user-form')
+                    </div>
                 </div>
-            </div>
+            @else
+                <div class="p-4 sm:p-8 bg-amber-50 border border-amber-200 sm:rounded-lg">
+                    <h3 class="font-semibold text-amber-900">Penghapusan akun dibatasi</h3>
+                    <p class="mt-1 text-sm text-amber-800">
+                        Akun admin dan dosen yang masih mengampu mata kuliah harus dikelola melalui administrator.
+                    </p>
+                </div>
+            @endif
         </div>
     </div>
 </x-app-layout>

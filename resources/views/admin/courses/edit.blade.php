@@ -1,0 +1,10 @@
+<x-app-layout>
+    <x-slot name="header"><h1 class="text-2xl font-bold text-slate-900">Edit Mata Kuliah</h1></x-slot>
+    <div class="py-8"><div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+        <form method="POST" action="{{ route('admin.courses.update', $course) }}" class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+            @csrf
+            @method('PUT')
+            @include('admin.courses._form', ['course' => $course])
+        </form>
+    </div></div>
+</x-app-layout>
