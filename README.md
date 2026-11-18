@@ -4,15 +4,20 @@ Proyek Laravel untuk praktikum Middleware, pembatasan route, autentikasi, dan ot
 
 ## Status
 
-Tahap 0 dan bootstrap proyek telah selesai:
+Tahap 0–10 telah selesai:
 
 - Laravel 12.73
 - Laravel Breeze 2.4 dengan Blade
 - Login, registrasi, logout, verifikasi email, reset password, dan profil
 - Tailwind CSS dan Vite
-- PHPUnit dengan 25 test bawaan Breeze
+- Model dan migration pengguna, mata kuliah, enrollment, materi, dan nilai
+- Seeder akun admin, dosen, mahasiswa, serta data mata kuliah contoh
+- Middleware `CheckRole` dengan alias `role`
+- Policy untuk kepemilikan mata kuliah, materi, dan nilai
+- Form Request untuk validasi seluruh data akademik
+- PHPUnit dengan 29 test dan 86 assertion
 
-Fitur role `admin`, `dosen`, dan `mahasiswa` akan ditambahkan pada tahap berikutnya.
+Controller, endpoint bisnis, dan tampilan CRUD akan ditambahkan pada tahap berikutnya.
 
 ## Kebutuhan Sistem
 
@@ -36,7 +41,7 @@ npm install
 Buat database MySQL bernama `akademik_app`, lalu sesuaikan kredensial database pada `.env`.
 
 ```bash
-php artisan migrate
+php artisan migrate --seed
 npm run build
 php artisan serve
 ```
@@ -55,7 +60,17 @@ npm run dev
 php artisan test
 ```
 
-## Struktur Hak Akses yang Direncanakan
+## Akun Pengujian
+
+Semua akun hasil seeder menggunakan password `password`.
+
+| Role | Email |
+| --- | --- |
+| Admin | `admin@example.com` |
+| Dosen | `dosen@example.com` |
+| Mahasiswa | `mahasiswa@example.com` |
+
+## Struktur Hak Akses
 
 | Fitur | Admin | Dosen | Mahasiswa |
 | --- | --- | --- | --- |
